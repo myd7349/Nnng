@@ -1,0 +1,15 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <NnngRuntimePackageVersion>1.11.0-rc.1</NnngRuntimePackageVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.103" />
+    <PackageVersion Include="Nnng.Runtime.linux-arm64" Version="$(NnngRuntimePackageVersion)" />
+    <PackageVersion Include="Nnng.Runtime.linux-x64" Version="$(NnngRuntimePackageVersion)" />
+    <PackageVersion Include="Nnng.Runtime.osx" Version="$(NnngRuntimePackageVersion)" />
+    <PackageVersion Include="Nnng.Runtime.win-arm64" Version="$(NnngRuntimePackageVersion)" />
+    <PackageVersion Include="Nnng.Runtime.win-x64" Version="$(NnngRuntimePackageVersion)" />
+    <PackageVersion Include="Nnng.Runtime.win-x86" Version="$(NnngRuntimePackageVersion)" />
+  </ItemGroup>
+</Project>

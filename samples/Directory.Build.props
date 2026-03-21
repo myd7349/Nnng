@@ -1,0 +1,23 @@
+<Project>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net35;net8.0</TargetFrameworks>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <IsPackable>false</IsPackable>
+    <RestoreAdditionalProjectSources>../Packages</RestoreAdditionalProjectSources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nnng.Runtime.linux-arm64" Condition="$([MSBuild]::IsOsPlatform('Linux'))" />
+    <PackageReference Include="Nnng.Runtime.linux-x64" Condition="$([MSBuild]::IsOsPlatform('Linux'))" />
+    <PackageReference Include="Nnng.Runtime.osx" Condition="$([MSBuild]::IsOsPlatform('OSX'))" />
+    <PackageReference Include="Nnng.Runtime.win-arm64" Condition="$([MSBuild]::IsOsPlatform('Windows'))" />
+    <PackageReference Include="Nnng.Runtime.win-x64" Condition="$([MSBuild]::IsOsPlatform('Windows'))" />
+    <PackageReference Include="Nnng.Runtime.win-x86" Condition="$([MSBuild]::IsOsPlatform('Windows'))" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Nnng\Nnng.csproj" />
+  </ItemGroup>
+
+</Project>

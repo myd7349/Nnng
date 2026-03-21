@@ -1,0 +1,29 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <RID Condition="'$(RID)' == ''">$([System.IO.Path]::GetFileName('$(MSBuildProjectDirectory.TrimEnd(`\/`))'))</RID>
+    <NngTagVersion>v1.11</NngTagVersion>
+    <NngBuildCITagVersion>1.11.0</NngBuildCITagVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Build">
+    <BuildInParallel>false</BuildInParallel>
+    <DebugType>None</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <NoWarn>CS2008</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package">
+    <ExcludeSymbolsFromPackage>false</ExcludeSymbolsFromPackage>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../LICENSE.txt" Pack="true" PackagePath="/" />
+    <None Include="../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+</Project>

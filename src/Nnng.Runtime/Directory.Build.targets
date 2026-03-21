@@ -1,0 +1,100 @@
+<Project>
+  <PropertyGroup>
+    <PackageId>Nnng.Runtime.$(RID)</PackageId>
+    <Description>nng runtime library for $(RID).</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(RID.StartsWith('android')) Or $(RID.StartsWith('linux'))">
+    <NativeLibBaseDir>lib</NativeLibBaseDir>
+    <NativeLibPrefix>lib</NativeLibPrefix>
+    <NativeLibExt>so</NativeLibExt>
+    <DebugSymbolExt></DebugSymbolExt>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(RID.StartsWith('ios')) Or $(RID.StartsWith('osx'))">
+    <NativeLibBaseDir>lib</NativeLibBaseDir>
+    <NativeLibPrefix>lib</NativeLibPrefix>
+    <NativeLibExt>dylib</NativeLibExt>
+    <DebugSymbolExt></DebugSymbolExt>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(RID.StartsWith('win'))">
+    <NativeLibBaseDir>bin</NativeLibBaseDir>
+    <NativeLibPrefix></NativeLibPrefix>
+    <NativeLibExt>dll</NativeLibExt>
+    <DebugSymbolExt>pdb</DebugSymbolExt>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NativeAssetTitle>nng-$(NngTagVersion)-$(RID)-dynamic</NativeAssetTitle>
+    <NativeAssetArchive>$(NativeAssetTitle).zip</NativeAssetArchive>
+    <NativeAssetUrl>https://github.com/myd7349/nng-ci-build/releases/download/$(NngBuildCITagVersion)/$(NativeAssetArchive)</NativeAssetUrl>
+    <NativeLibFile>$(NativeLibPrefix)nng.$(NativeLibExt)</NativeLibFile>
+    <NativeLibUnpackDir>$(ProjectDir)$(BaseIntermediateOutputPath)$(NativeAssetTitle)/</NativeLibUnpackDir>
+  </PropertyGroup>
+
+  <Target Name="_DownloadNativeAsset"
+          BeforeTargets="_UnpackNativeAsset">
+    <DownloadFile SourceUrl="$(NativeAssetUrl)"
+                  DestinationFolder="$(ProjectDir)$(BaseIntermediateOutputPath)"
+                  DestinationFileName="$(NativeAssetArchive)"
+                  Condition="!Exists('$(ProjectDir)$(BaseIntermediateOutputPath)$(NativeAssetArchive)')" />
+  </Target>
+
+  <Target Name="_UnpackNativeAsset"
+          BeforeTargets="_CollectNativeLibs">
+    <Unzip SourceFiles="$(ProjectDir)$(BaseIntermediateOutputPath)$(NativeAssetArchive)"
+           DestinationFolder="$(NativeLibUnpackDir)"
+           OverwriteReadOnlyFiles="true"
+           Condition="!Exists('$(NativeLibUnpackDir)$(NativeLibBaseDir)/$(NativeLibFile)')"  />
+  </Target>
+
+  <Target Name="_CollectNativeLibs"
+          BeforeTargets="Build">
+    <ItemGroup>
+      <NativeLibs Include="$(NativeLibUnpackDir)$(NativeLibBaseDir)/**/$(NativeLibFile)" />
+      <NativePdbs Include="$(NativeLibUnpackDir)$(NativeLibBaseDir)/**/*.$(DebugSymbolExt)"
+                  Condition="$(DebugSymbolExt) != ''" />
+      <None Include="@(NativeLibs);@(NativePdbs)">
+        <Pack>true</Pack>
+        <PackagePath>runtimes/$(RID)/native</PackagePath>
+        <Link>runtimes/$(RID)/native/%(FileName)%(Extension)</Link>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="_IncludeAdditionalTfmSpecificPackageFilesPrepare">
+    <GetNuGetShortFolderName TargetFrameworkMoniker="$(TargetFrameworkMoniker)" TargetPlatformMoniker="$(TargetPlatformMoniker)">
+      <Output TaskParameter="NuGetShortFolderName" PropertyName="NuGetShortFolderName" />
+    </GetNuGetShortFolderName>
+  </Target>
+
+  <Target Name="_IncludePlaceholders" AfterTargets="_IncludeAdditionalTfmSpecificPackageFilesPrepare">
+    <Touch Files="$(IntermediateOutputPath)_._" AlwaysCreate="True" />
+    <ItemGroup>
+      <FileWrites Include="$(IntermediateOutputPath)_._" />
+      <TfmSpecificPackageFile Include="$(IntermediateOutputPath)_._"
+                              PackagePath="lib\$(NuGetShortFolderName)\_._" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="_IncludeAdditionalTfmSpecificPackageFiles">
+    <ItemGroup Condition="'$(TargetFramework)' == 'net35' Or '$(TargetFramework)' == 'net45'">
+      <TfmSpecificPackageFile Include="$(ProjectDir)build\net35\$(PackageId).targets"
+                              PackagePath="build\$(TargetFramework)\$(PackageId).targets" />
+      <TfmSpecificPackageFile Include="$(ProjectDir)build\net35\$(PackageId).targets"
+                              PackagePath="buildTransitive\$(TargetFramework)\$(PackageId).targets" />
+    </ItemGroup>
+  </Target>
+
+  <PropertyGroup>
+    <_IncludeAdditionalTfmSpecificPackageFilesDependsOn>
+      _IncludeAdditionalTfmSpecificPackageFilesPrepare;
+      _IncludeAdditionalTfmSpecificPackageFiles;
+    </_IncludeAdditionalTfmSpecificPackageFilesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="IncludeAdditionalTfmSpecificPackageFiles"
+          DependsOnTargets="$(_IncludeAdditionalTfmSpecificPackageFilesDependsOn)" />
+</Project>

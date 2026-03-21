@@ -1,0 +1,33 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup Label="Build">
+    <TargetFrameworks>net35;net45;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+    <Version>1.11.0-rc.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package">
+    <IsPackable>true</IsPackable>
+    <!--
+    <PackageIcon>Icon.png</PackageIcon>
+    -->
+    <!--
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    -->
+    <PackageProjectUrl>https://github.com/myd7349/Nnng</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>https://github.com/myd7349/Nnng/releases</PackageReleaseNotes>
+    <!--
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    -->
+    <PackageTags>nanomsg;networking;nng</PackageTags>
+    <PackageVersion>$(Version)</PackageVersion>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/myd7349/Nnng.git</RepositoryUrl>
+  </PropertyGroup>
+</Project>
