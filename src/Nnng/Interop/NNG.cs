@@ -6,6 +6,13 @@ namespace Nnng.Interop
 {
     internal static partial class NNG
     {
+#if NETFRAMEWORK
+        static NNG()
+        {
+            NativeLoader.EnsureLoaded();
+        }
+#endif
+
 #if USE_LIBRARY_IMPORT
         [LibraryImport(LibraryName)]
         [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
