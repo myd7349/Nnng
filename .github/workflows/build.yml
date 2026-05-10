@@ -52,6 +52,9 @@ jobs:
       - name: Build Nnng
         run: dotnet build Nnng.slnx -c Release
 
+      - name: Run NngVersion
+        run: dotnet run --project ./samples/NngVersion/NngVersion.csproj -c Release --framework net8.0
+
       - name: Pack Nnng
         run: dotnet pack Nnng.slnx -c Release
 

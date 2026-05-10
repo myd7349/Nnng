@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <NnngRuntimePackageVersion>1.11.0-rc.1</NnngRuntimePackageVersion>
+    <NnngRuntimePackageVersion>1.11.0-alpha.1</NnngRuntimePackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.103" />
