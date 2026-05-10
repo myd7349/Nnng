@@ -5,7 +5,6 @@
     <OutputType>Exe</OutputType>
     <InvariantGlobalization>true</InvariantGlobalization>
     <IsPackable>false</IsPackable>
-    <RestoreAdditionalProjectSources>../Packages</RestoreAdditionalProjectSources>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,5 +19,4 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Nnng\Nnng.csproj" />
   </ItemGroup>
-
 </Project>

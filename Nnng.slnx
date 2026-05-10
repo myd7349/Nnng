@@ -1,7 +1,5 @@
 <Solution>
-  <Folder Name="/samples/">
-    <Project Path="samples/NngVersion/NngVersion.csproj" Id="cc871c89-fab4-4355-a201-142180402179" />
-  </Folder>
+  <Folder Name="/samples/" />
   <Folder Name="/src/">
     <Project Path="src/Nnng/Nnng.csproj" />
   </Folder>
