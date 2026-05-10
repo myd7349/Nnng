@@ -15,6 +15,7 @@
     <Project Path="src/Nnng.Runtime/iossimulator-x64/Nnng.Runtime.iossimulator-x64.csproj" />
     <Project Path="src/Nnng.Runtime/linux-arm/Nnng.Runtime.linux-arm.csproj" />
     <Project Path="src/Nnng.Runtime/linux-arm64/Nnng.Runtime.linux-arm64.csproj" />
+    <Project Path="src/Nnng.Runtime/linux-loongarch64/Nnng.Runtime.linux-loongarch64.csproj" />
     <Project Path="src/Nnng.Runtime/linux-musl-arm64/Nnng.Runtime.linux-musl-arm64.csproj" />
     <Project Path="src/Nnng.Runtime/linux-musl-x64/Nnng.Runtime.linux-musl-x64.csproj" />
     <Project Path="src/Nnng.Runtime/linux-x64/Nnng.Runtime.linux-x64.csproj" />

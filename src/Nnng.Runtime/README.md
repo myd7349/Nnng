@@ -14,6 +14,7 @@ The following NuGet packages contain pre-compiled binaries of [nng](https://gith
 | ios-arm64     | [![Nnng.Runtime.ios-arm64-badge]][Nnng.Runtime.ios-arm64-nuget] |
 | linux-arm     | [![Nnng.Runtime.linux-arm-badge]][Nnng.Runtime.linux-arm-nuget] |
 | linux-arm64   | [![Nnng.Runtime.linux-arm64-badge]][Nnng.Runtime.linux-arm64-nuget] |
+| linux-loongarch64 | [![Nnng.Runtime.linux-loongarch64-badge]][Nnng.Runtime.linux-loongarch64-nuget] |
 | linux-musl-arm64 | [![Nnng.Runtime.linux-musl-arm64-badge]][Nnng.Runtime.linux-musl-arm64-nuget] |
 | linux-musl-x64   | [![Nnng.Runtime.linux-musl-x64-badge]][Nnng.Runtime.linux-musl-x64-nuget] |
 | linux-x64     | [![Nnng.Runtime.linux-x64-badge]][Nnng.Runtime.linux-x64-nuget] |
@@ -42,6 +43,8 @@ The following NuGet packages contain pre-compiled binaries of [nng](https://gith
 [Nnng.Runtime.linux-arm-nuget]: https://www.nuget.org/packages/Nnng.Runtime.linux-arm
 [Nnng.Runtime.linux-arm64-badge]: https://img.shields.io/nuget/v/Nnng.Runtime.linux-arm64.svg
 [Nnng.Runtime.linux-arm64-nuget]: https://www.nuget.org/packages/Nnng.Runtime.linux-arm64
+[Nnng.Runtime.linux-loongarch64-nuget]: https://www.nuget.org/packages/Nnng.Runtime.linux-loongarch64
+[Nnng.Runtime.linux-loongarch64-badge]: https://img.shields.io/nuget/v/Nnng.Runtime.linux-loongarch64.svg
 [Nnng.Runtime.linux-musl-arm64-nuget]: https://www.nuget.org/packages/Nnng.Runtime.linux-musl-arm64
 [Nnng.Runtime.linux-musl-arm64-badge]: https://img.shields.io/nuget/v/Nnng.Runtime.linux-musl-arm64.svg
 [Nnng.Runtime.linux-musl-x64-badge]: https://img.shields.io/nuget/v/Nnng.Runtime.linux-musl-x64.svg
