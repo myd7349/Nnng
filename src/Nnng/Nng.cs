@@ -1,6 +1,4 @@
-using System.Runtime.InteropServices;
-
-using static Nnng.Interop.NNG;
+using static Nnng.Interop.NngNative;
 
 namespace Nnng
 {
@@ -18,7 +16,7 @@ namespace Nnng
         /// </returns>
         public static string Version()
         {
-            return Marshal.PtrToStringAnsi(nng_version());
+            return nng_version();
         }
     }
 }

@@ -1,0 +1,3 @@
+[submodule "src/Nnng.CodeGen/nng"]
+	path = src/Nnng.CodeGen/nng
+	url = https://github.com/nanomsg/nng.git

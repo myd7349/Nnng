@@ -3,6 +3,7 @@
     <Project Path="samples/NngVersion/NngVersion.csproj" Id="cc871c89-fab4-4355-a201-142180402179" />
   </Folder>
   <Folder Name="/src/">
+    <Project Path="src/Nnng.CodeGen/Nnng.CodeGen.csproj" Id="095078b3-d30a-49c0-9a61-76fa6c895a6a" />
     <Project Path="src/Nnng/Nnng.csproj" />
   </Folder>
   <Folder Name="/src/Runtime/">
