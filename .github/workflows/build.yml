@@ -32,7 +32,7 @@ jobs:
         os: [ macOS-latest, ubuntu-24.04-arm, ubuntu-latest, windows-11-arm, windows-latest ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
 
